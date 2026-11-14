@@ -5,6 +5,7 @@
   <img src="https://img.shields.io/badge/board-Backlog.md-3b82f6?style=flat-square" alt="Backlog.md">
   <img src="https://img.shields.io/badge/always--on_cost-~213_tokens-22c55e?style=flat-square" alt="~213 tokens">
   <img src="https://img.shields.io/badge/setup-2_commands-a855f7?style=flat-square" alt="2-command setup">
+  <img src="https://img.shields.io/badge/license-MIT-94a3b8?style=flat-square" alt="MIT license">
 </p>
 
 **A Claude Code plugin that turns AI-assisted coding into a disciplined pipeline.** Every project moves through explore → stories → spec → test-first build → review, one stage per session. State lives in files and on a Kanban board, never in chat history.
