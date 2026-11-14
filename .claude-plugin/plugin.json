@@ -1,0 +1,6 @@
+{
+  "name": "smartdev",
+  "version": "0.1.0",
+  "description": "Lightweight spec-driven pipeline: explore → stories → spec → build (TDD) → review, one stage per session, state handed off through files and a Backlog.md board.",
+  "author": { "name": "Suman Pokhrel", "url": "https://github.com/Suman196pokhrel" }
+}
