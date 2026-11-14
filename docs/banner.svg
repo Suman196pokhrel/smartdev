@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 340" width="1280" height="340">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b1020"/><stop offset="1" stop-color="#151b2e"/></linearGradient></defs>
+<rect width="1280" height="340" rx="20" fill="url(#bg)"/>
+<text x="640.0" y="92" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="60" font-weight="700" fill="#f8fafc">smart<tspan fill="#22c55e">dev</tspan></text>
+<text x="640.0" y="132" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="20" fill="#94a3b8">Spec-driven, test-first pipeline plugin for Claude Code</text>
+<line x1="300" y1="230" x2="980" y2="230" stroke="#334155" stroke-width="2" stroke-dasharray="6 6"/>
+<path d="M 640 184 Q 810 144 980 184" fill="none" stroke="#475569" stroke-width="1.5"/>
+<text x="810" y="156" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#64748b">loop per story</text>
+<circle cx="300" cy="230" r="34" fill="#0f172a" stroke="#3b82f6" stroke-width="2"/><g transform="translate(284 214) scale(1.3333)" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" />
+  <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" /></g><text x="300" y="292" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="15" fill="#cbd5e1">explore</text>
+<circle cx="470" cy="230" r="34" fill="#0f172a" stroke="#06b6d4" stroke-width="2"/><g transform="translate(454 214) scale(1.3333)" fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 5h8" />
+  <path d="M13 12h8" />
+  <path d="M13 19h8" />
+  <path d="m3 17 2 2 4-4" />
+  <path d="m3 7 2 2 4-4" /></g><text x="470" y="292" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="15" fill="#cbd5e1">stories</text>
+<circle cx="640" cy="230" r="34" fill="#0f172a" stroke="#a855f7" stroke-width="2"/><g transform="translate(624 214) scale(1.3333)" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 7 8.7 2.7a2.41 2.41 0 0 0-3.4 0L2.7 5.3a2.41 2.41 0 0 0 0 3.4L7 13" />
+  <path d="m8 6 2-2" />
+  <path d="m18 16 2-2" />
+  <path d="m17 11 4.3 4.3c.94.94.94 2.46 0 3.4l-2.6 2.6c-.94.94-2.46.94-3.4 0L11 17" />
+  <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+  <path d="m15 5 4 4" /></g><text x="640" y="292" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="15" fill="#cbd5e1">spec</text>
+<circle cx="810" cy="230" r="34" fill="#0f172a" stroke="#22c55e" stroke-width="2"/><g transform="translate(794 214) scale(1.3333)" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2v17.5c0 1.4-1.1 2.5-2.5 2.5c-1.4 0-2.5-1.1-2.5-2.5V2" />
+  <path d="M8.5 2h7" />
+  <path d="M14.5 16h-5" /></g><text x="810" y="292" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="15" fill="#cbd5e1">build</text>
+<circle cx="980" cy="230" r="34" fill="#0f172a" stroke="#f59e0b" stroke-width="2"/><g transform="translate(964 214) scale(1.3333)" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2" />
+  <path d="M17 3h2a2 2 0 0 1 2 2v2" />
+  <path d="M21 17v2a2 2 0 0 1-2 2h-2" />
+  <path d="M7 21H5a2 2 0 0 1-2-2v-2" />
+  <circle cx="12" cy="12" r="1" />
+  <path d="M18.944 12.33a1 1 0 0 0 0-.66 7.5 7.5 0 0 0-13.888 0 1 1 0 0 0 0 .66 7.5 7.5 0 0 0 13.888 0" /></g><text x="980" y="292" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="15" fill="#cbd5e1">review</text>
+</svg>
