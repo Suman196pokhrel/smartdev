@@ -28,6 +28,14 @@ I_MODEL=$'\xf3\xb0\x9a\xa9' I_LIMIT=$'\xf3\xb1\x8e\xab'
 I_DIR=$'\xef\x81\xbb' I_GIT=$'\xee\x9c\xa5' I_DOCKER=$'\xef\x8c\x88'
 I_NODE=$'\xee\x9c\x98' I_PY=$'\xee\x9c\xbc' I_GO=$'\xee\x98\xa7' I_RUST=$'\xee\x9e\xa8'
 I_BOLT=$'\xef\x83\xa7' I_NEXT='▲'
+I_COMMIT=$'\U000F0718'
+# Smart Dev stage icons (Material Design outline set) — same set the skills and `smartdev` use
+I_EXPLORE=$'\U000F018C' I_STORIES=$'\U000F0756' I_SPEC=$'\U000F1353' I_BUILD=$'\U000F0668'
+I_REVIEW=$'\U000F0D05' I_DONE=$'\U000F05E1' I_PARKED=$'\U000F03E6' I_TASK=$'\U000F0913'
+I_BOARD=$'\U000F07AF' I_BLOCK=$'\U000F05D6'
+
+# seconds → 5m / 3h / 2d
+ago() { local s=$(( $(date +%s) - $1 )); if (( s < 3600 )); then echo "$((s / 60))m"; elif (( s < 86400 )); then echo "$((s / 3600))h"; else echo "$((s / 86400))d"; fi; }
 
 # green < 50, yellow < 80, red otherwise
 level() { if (( $1 >= 80 )); then printf %s "$RED"; elif (( $1 >= 50 )); then printf %s "$YEL"; else printf %s "$GRN"; fi; }
@@ -55,6 +63,11 @@ if gs=$(git -C "$cwd" --no-optional-locks status --porcelain=v2 --branch 2>/dev/
   (( staged ))    && g+=" ${GRN}+${staged}${R}"
   (( modified ))  && g+=" ${YEL}~${modified}${R}"
   (( untracked )) && g+=" ${DIM}?${untracked}${R}"
+  # Time since last commit; yellow when changes have sat uncommitted for 30m+ (commit on every green test)
+  if last=$(git -C "$cwd" log -1 --format=%ct 2>/dev/null) && [[ -n $last ]]; then
+    c=$DIM; (( (staged || modified) && $(date +%s) - last > 1800 )) && c=$YEL
+    g+=" ${c}${I_COMMIT} $(ago "$last")${R}"
+  fi
   out+="${SEP}${g}"
 fi
 
@@ -90,3 +103,37 @@ fi
 (( added || removed )) && out+="${SEP}${GRN}+${added}${R} ${RED}-${removed}${R}"
 
 printf '%s\n' "$out"
+
+# Line 2, Smart Dev projects only: stage · task · acceptance criteria · board progress · blockers
+st="$proj/.smartdev/STATE.md"
+[[ -f $st ]] || exit 0
+stage=$(sed -n 's/^stage: *//p' "$st" | awk '{print $1}')
+task=$(sed -n 's/^task: *//p' "$st")
+blockers=$(sed -n 's/^blockers: *//p' "$st")
+case $stage in
+  explore) s="${BLU}${I_EXPLORE} explore" ;;  stories) s="${CYN}${I_STORIES} stories" ;;
+  spec)    s="${MAG}${I_SPEC} spec" ;;        build)   s="${GRN}${I_BUILD} build" ;;
+  review)  s="${YEL}${I_REVIEW} review" ;;    *)       s="${DIM}${stage:-?}" ;;
+esac
+l2="${BOLD}${s}${R}"
+
+if [[ -n $task && $task != none ]]; then
+  id=${task%% *} title=${task#"$id"}; title=${title# }
+  (( ${#title} > 32 )) && title="${title:0:31}…"
+  l2+="${SEP}${I_TASK} ${id}${DIM} ${title}${R}"
+  card=$(compgen -G "$proj/backlog/tasks/${id,,} - *.md" | head -1)
+  if [[ -n $card ]]; then
+    read -r acd act < <(awk '/AC:BEGIN/{f=1;next} /AC:END/{f=0} f&&/^- \[x\]/{d++} f&&/^- \[[ x]\]/{t++} END{print d+0, t+0}' "$card")
+    (( act )) && { c=$DIM; (( acd == act )) && c=$GRN; l2+=" ${c}${I_DONE} ${acd}/${act}${R}"; }
+  fi
+fi
+
+if compgen -G "$proj/backlog/tasks/*.md" >/dev/null; then
+  read -r done total parked < <(grep -h '^status: ' "$proj"/backlog/tasks/*.md |
+    awk '/Parked/{p++; next} {t++} /Done/{d++} END{print d+0, t+0, p+0}')
+  l2+="${SEP}${I_BOARD} ${done}/${total} done"
+  (( parked )) && l2+=" ${DIM}${I_PARKED} ${parked}${R}"
+fi
+
+[[ -n $blockers && $blockers != none ]] && l2+="${SEP}${RED}${I_BLOCK} blocked${R}"
+printf '%s\n' "$l2"
