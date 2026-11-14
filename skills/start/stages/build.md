@@ -1,4 +1,4 @@
-# Stage: Build (TDD)
+# 󰙨 Stage: Build (TDD)
 Input: a card whose plan holds the spec. Move it: `backlog task edit <id> -s "In Progress"`.
 
 For each test in the spec's test list:

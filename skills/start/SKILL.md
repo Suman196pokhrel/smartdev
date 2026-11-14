@@ -12,7 +12,7 @@ Run `bash <this skill's base directory>/init.sh "<project name>"` from the proje
 1. State: it was injected at session start; if not, read `.smartdev/STATE.md`.
 2. If it names a task, load only that card: `backlog task <id> --plain`. If the card's status contradicts the stage, tell the user and ask which is right. The board owns task status; STATE.md owns the stage.
 3. Read only `stages/<stage>.md` from this skill's directory and follow it.
-4. When the stage's "Done when" is met, stop and say: "Stage done. Say **wrap up**, then open a fresh session." Do not start the next stage in this session.
+4. When the stage's "Done when" is met, stop and say: "<stage icon> **<stage> done** · say **wrap up**, then open a fresh session." Do not start the next stage in this session.
 
 ## Rules
 - One stage per session. Handoff is files (docs, board cards, code, STATE.md), never chat history.
@@ -20,6 +20,9 @@ Run `bash <this skill's base directory>/init.sh "<project name>"` from the proje
 - New ideas or scope mid-session: `backlog task create "<idea>" -s Parked`, tell the user, carry on. Never build them.
 - Only the review stage moves a card to Done.
 - Fast lane: a small bug fix or tweak skips explore, stories and spec. Use or create one card, follow `stages/build.md`, then `stages/review.md`; both in one session is fine.
+
+## Icons (use in replies; same set as the status line)
+󰆌 explore · 󰝖 stories · 󱍓 spec · 󰙨 build · 󰴅 review · 󰗡 done · 󰏦 parked · 󱐋 fast lane · 󰤓 task · 󰗖 blocker · 󰃃 handoff
 
 ## Board commands (Backlog.md)
 Columns: `To Do` · `In Progress` · `Review` · `Done` · `Parked`

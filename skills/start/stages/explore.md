@@ -1,4 +1,4 @@
-# Stage: Explore
+# 󰆌 Stage: Explore
 Goal: understand the problem before anything is planned. No code, no stories yet.
 
 Do:

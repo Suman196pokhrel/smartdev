@@ -24,4 +24,11 @@ Be quick. Ask only if the state is genuinely unclear.
 4. **Log:** append one line to `.smartdev/log.md`:
    `YYYY-MM-DD HH:MM | <project> | <stage worked> → <next stage> | <task or -> | <one-line summary>`
 5. **Commit** only the state and board: `git add .smartdev backlog && git commit -m "chore(smartdev): handoff session <n>" -- .smartdev backlog`. Skip this if nothing changed.
-6. **Reply** in 5 lines max: what got done · next stage and action · blockers · "Open a fresh session; the state loads automatically."
+6. **Reply** with exactly this shape, icons from the start skill, nothing else:
+   ```
+   󰃃 **Handoff · session <n>**
+   󰗡 <what got done, one line>
+   <next stage icon> next: <stage> · <task id> · <first action>
+   󰗖 blockers: <none or one line>
+   Fresh session next; state loads automatically.
+   ```

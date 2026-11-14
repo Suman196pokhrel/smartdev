@@ -1,4 +1,4 @@
-# Stage: User stories
+# 󰝖 Stage: User stories
 Input: `docs/explore.md`. Goal: a backlog of small stories, each shippable on its own.
 
 Do:

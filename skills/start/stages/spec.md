@@ -1,4 +1,4 @@
-# Stage: Spec (one story)
+# 󱍓 Stage: Spec (one story)
 Input: one To Do card (the top one unless the user picks another). Read the card, `docs/explore.md` (non-goals) and only the code this story touches.
 
 Write a minimal spec into the card with `backlog task edit <id> --plan "..."`, under ~40 lines:

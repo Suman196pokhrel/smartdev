@@ -1,4 +1,4 @@
-# Stage: Review (fresh eyes)
+# 󰴅 Stage: Review (fresh eyes)
 Input: a card in Review. Read the card (spec and acceptance criteria), then its changes: `git log --oneline --grep "TASK-<n>"` and the diffs of those commits.
 
 Check:
