@@ -21,7 +21,7 @@ while read -r d; do
   task=$(sed -n 's/^task: *//p' "$f"); [[ $task == none ]] && task="—"
   (( ${#task} > 33 )) && task="${task:0:32}…"
   upd=$(sed -n 's/^updated: *\([0-9-]* [0-9:]*\).*/\1/p' "$f")
-  when=$(t=$(date -d "$upd" +%s 2>/dev/null) && ago "$t" || echo "$upd")
+  when=$(t=$(date -d "$upd" +%s 2>/dev/null || date -j -f "%Y-%m-%d %H:%M" "$upd" +%s 2>/dev/null) && ago "$t" || echo "$upd")
   board="—"
   if compgen -G "$d/backlog/tasks/*.md" >/dev/null; then
     board=$(grep -h '^status: ' "$d"/backlog/tasks/*.md | awk '/Parked/{next} {t++} /Done/{n++} END{print n+0 "/" t+0}')

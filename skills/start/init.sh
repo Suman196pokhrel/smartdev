@@ -11,8 +11,8 @@ command -v backlog >/dev/null || { echo "Backlog.md missing: npm i -g backlog.md
 git rev-parse --git-dir >/dev/null 2>&1 || git init -q
 [[ -f backlog/config.yml ]] || backlog init "$name" --defaults --integration-mode none >/dev/null 2>&1 \
   || { echo "backlog init failed; run it by hand to see why" >&2; exit 1; }
-# shortcut: GNU sed -i, upgrade to `sed -i ''` handling if this ever runs on macOS
-sed -i 's/^statuses:.*/statuses: ["To Do", "In Progress", "Review", "Done", "Parked"]/; s/^remote_operations: true/remote_operations: false/' backlog/config.yml
+# -i.bak works on both GNU and BSD/macOS sed
+sed -i.bak 's/^statuses:.*/statuses: ["To Do", "In Progress", "Review", "Done", "Parked"]/; s/^remote_operations: true/remote_operations: false/' backlog/config.yml && rm backlog/config.yml.bak
 
 mkdir -p .smartdev docs
 sed "s/<project>/$name/; s/<updated>/$(date '+%F %R')/" "$here/STATE.template.md" > .smartdev/STATE.md

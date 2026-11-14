@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Claude Code status line. Uses the terminal's 16 ANSI colors, so it follows
-# whatever Omarchy theme is active. Icons need a Nerd Font (JetBrainsMono NF).
+# your terminal theme. Icons need a Nerd Font.
 
 # Pull every field in one jq call; missing values become "".
 IFS=$'\x1f' read -r model effort cwd proj ctx rl5 rl5_reset added removed < <(
@@ -95,7 +95,7 @@ fi
 # 5-hour usage limit (subscribers only); adds reset time once it gets high
 if [[ -n $rl5 ]]; then
   r="$(level "$rl5")${I_LIMIT} ${rl5}%${R}"
-  (( rl5 >= 75 )) && [[ -n $rl5_reset ]] && r+=" ${DIM}↻ $(date -d "@$rl5_reset" +%H:%M)${R}"
+  (( rl5 >= 75 )) && [[ -n $rl5_reset ]] && r+=" ${DIM}↻ $(date -d "@$rl5_reset" +%H:%M 2>/dev/null || date -r "$rl5_reset" +%H:%M)${R}"
   out+="${SEP}${r}"
 fi
 
