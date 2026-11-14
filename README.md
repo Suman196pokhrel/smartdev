@@ -4,7 +4,7 @@
   <img src="https://img.shields.io/badge/Claude_Code-plugin-d97757?style=flat-square" alt="Claude Code plugin">
   <img src="https://img.shields.io/badge/board-Backlog.md-3b82f6?style=flat-square" alt="Backlog.md">
   <img src="https://img.shields.io/badge/always--on_cost-~213_tokens-22c55e?style=flat-square" alt="~213 tokens">
-  <img src="https://img.shields.io/badge/setup-2_commands-a855f7?style=flat-square" alt="2-command setup">
+  <img src="https://img.shields.io/badge/setup-1_command-a855f7?style=flat-square" alt="1-command setup">
   <img src="https://img.shields.io/badge/license-MIT-94a3b8?style=flat-square" alt="MIT license">
 </p>
 
@@ -52,14 +52,15 @@ flowchart LR
 
 ## Quick start
 
-```bash
-git clone https://github.com/Suman196pokhrel/smartdev.git
-./smartdev/install.sh            # add --statusline to replace an existing status line
+In Claude Code:
+
+```
+/plugin install smartdev --marketplace Suman196pokhrel/smartdev
 ```
 
-Restart Claude Code, open any project and run **`/smartdev:start`**.
+Then open any project and run **`/smartdev:start`**. The first session after installing sets up the rest: it installs Backlog.md, sets the status line (only if you don't already have one) and adds the `smartdev` terminal command.
 
-<sub>Linux or macOS. Needs <code>git</code>, <code>jq</code>, <code>npm</code>, <code>claude</code>, bash 4.2+ (macOS: <code>brew install bash</code>) and a <a href="https://www.nerdfonts.com">Nerd Font</a> for the status line icons. Keep the clone: the plugin runs from it. Update with <code>git pull</code> then <code>/reload-plugins</code>.</sub>
+<sub>Linux or macOS. Needs <code>git</code>, <code>jq</code>, <code>npm</code>, bash 4.2+ (macOS: <code>brew install bash</code>) and a <a href="https://www.nerdfonts.com">Nerd Font</a> for the status line icons. On Claude Code older than 2.1.275, run <code>/plugin marketplace add Suman196pokhrel/smartdev</code> then <code>/plugin install smartdev@smartdev</code>. Already have a status line? Smart Dev keeps yours; to switch, set <code>statusLine.command</code> in <code>~/.claude/settings.json</code> to <code>~/.claude/plugins/data/smartdev-smartdev/statusline.sh</code>.</sub>
 
 ## A session
 
@@ -123,10 +124,9 @@ flowchart LR
 .claude-plugin/   plugin + marketplace manifests
 skills/start/     rules, init.sh, STATE template, stages/*.md (only the current one is read)
 skills/handoff/   session close
-hooks/            inject state on start · catch "wrap up"
+hooks/            first-run setup · inject state on start · catch "wrap up"
 statusline.sh     two-line status line
 status.sh         the `smartdev` command
-install.sh        setup and update, safe to re-run
 docs/             banner, icons (Lucide, ISC), Excalidraw overview
 ```
 </details>

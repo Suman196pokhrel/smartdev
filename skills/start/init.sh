@@ -6,7 +6,8 @@ name=${1:-$(basename "$PWD")}
 name=${name//[\/&]/-}  # keep sed replacement safe
 
 [[ -f .smartdev/STATE.md ]] && { echo "Smart Dev already set up here."; exit 0; }
-command -v backlog >/dev/null || { echo "Backlog.md missing: npm i -g backlog.md" >&2; exit 1; }
+command -v backlog >/dev/null || npm i -g backlog.md >/dev/null \
+  || { echo "Backlog.md missing and npm install failed; run: npm i -g backlog.md" >&2; exit 1; }
 
 git rev-parse --git-dir >/dev/null 2>&1 || git init -q
 [[ -f backlog/config.yml ]] || backlog init "$name" --defaults --integration-mode none >/dev/null 2>&1 \
