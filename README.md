@@ -52,13 +52,13 @@ flowchart LR
 ## Quick start
 
 ```bash
-git clone git@github.com:Suman196pokhrel/smartdev.git ~/DevStuff/projects/smartdev
-~/DevStuff/projects/smartdev/install.sh
+git clone https://github.com/Suman196pokhrel/smartdev.git
+./smartdev/install.sh            # add --statusline to replace an existing status line
 ```
 
 Restart Claude Code, open any project and run **`/smartdev:start`**.
 
-<sub>Needs <code>git</code>, <code>jq</code>, <code>npm</code>, <code>claude</code> and a <a href="https://www.nerdfonts.com">Nerd Font</a> for the status line icons. Update with <code>git pull</code> then <code>/reload-plugins</code>.</sub>
+<sub>Linux or macOS. Needs <code>git</code>, <code>jq</code>, <code>npm</code>, <code>claude</code>, bash 4.2+ (macOS: <code>brew install bash</code>) and a <a href="https://www.nerdfonts.com">Nerd Font</a> for the status line icons. Keep the clone: the plugin runs from it. Update with <code>git pull</code> then <code>/reload-plugins</code>.</sub>
 
 ## A session
 
